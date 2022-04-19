@@ -10,7 +10,7 @@ services:
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
   
@@ -20,9 +20,8 @@ services:
     ports:
       - "9100:9100"
 
-      
   grafana:
     container_name: grafana
     image: grafana/grafana:latest
     ports:
-      - "5000:3000"
+      - "3000:3000"
