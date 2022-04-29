@@ -1,7 +1,7 @@
 global:
-  scrape_interval:     15s
-  evaluation_interval: 15s
-  
+  scrape_interval:     1s
+  evaluation_interval: 1s
+
   external_labels:
     monitor: 'Dashboard'
 
@@ -17,3 +17,10 @@ scrape_configs:
 
     static_configs:
       - targets: ['node-exporter:9100']
+
+# IF USING NVIDIA GPU
+#   - job_name: 'gcdm-exporter'
+#     scrape_interval: 1s
+
+#     static_configs:
+#       - targets: ['gcdm-exporter:9400']
