@@ -10,7 +10,7 @@ services:
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
     volumes:
-      - ../prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
   
@@ -20,6 +20,14 @@ services:
     ports:
       - "9100:9100"
 
+# IF USE NVIDIA GPU
+#   dcgm-exporter:
+#     container_name: dcgm-exporter
+#     image: nvcr.io/nvidia/k8s/dcgm-exporter
+#     runtime: nvidia
+#     ports:
+#       - "9400:9400"
+      
   grafana:
     container_name: grafana
     image: grafana/grafana:latest
