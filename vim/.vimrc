@@ -55,5 +55,5 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 " seoul256 테마 설정
 let g:seoul256_background = 233
 "let g:molokai_original = 1
-colo seoul256
+"colo seoul256
 "set background=dark
