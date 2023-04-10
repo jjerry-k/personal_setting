@@ -1,0 +1,39 @@
+version: "2.3"
+services:
+  docker:
+    image: docker:dind
+    container_name: jenkins-docker
+    volumes:
+      - /disk/jenkins/docker-certs:/certs/client
+      - /disk/jenkins/data:/var/jenkins_home
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment: 
+      - DOCKER_TLS_CERTDIR=/certs
+      - TZ=Asia/Seoul
+    ports:
+      - "2376:2376"
+    privileged: true
+    command: --storage-driver=overlay2
+
+  jenkins:
+    depends_on:
+        - docker
+    build: .
+    container_name: jenkins-blueocean
+    restart: on-failure
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+    volumes:
+      - /disk/jenkins/docker-certs:/certs/client:ro
+      - /disk/jenkins/data:/var/jenkins_home
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+networks:
+  jenkins:
+    driver: bridge
