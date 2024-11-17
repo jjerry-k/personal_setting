@@ -18,6 +18,6 @@ bash controlplane_node.sh <master ip>
 ```bash
 bash k8s_pkg_cfg.sh <k8s_version> <containerd_version> 'W'
 # ex) bash k8s_pkg_cfg.sh 1.30.0-1.1 1.6.31-1 'W'
-bash worker_nodes.sh
+bash worker_nodes.sh <master ip> <worker number>
 # ex) bash worker_nodes.sh 192.168.0.101 1
 ```
