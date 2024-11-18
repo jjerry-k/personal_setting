@@ -84,10 +84,10 @@ modprobe br_netfilter
 # ==============================================================================
 # local small dns
 echo "127.0.0.1 localhost" > /etc/hosts # localhost name will use by calico-node
-echo "$2 cp-k8s" >> /etc/hosts
-index=3
-for arg in "$@"
+echo "$2 k8s-cp" >> /etc/hosts
+index=1
+for arg in "${@:3}"
 do
-  echo "$arg w$index-k8s" >> /etc/hosts
+  echo "$arg k8s-worker-$index" >> /etc/hosts
   index=$((index + 1))
 done
