@@ -25,7 +25,7 @@ if [ "$#" -ge 3 ]; then
 
             # 네트워크 주소 확인 (마지막 옥텟이 0이면 잘못된 주소 )
             if $valid_ip && [ "${octets[3]}" -ne 0 ]; then
-                echo "$arg 는 유효한 IP 주소 형식입니다."
+                echo "$arg"
             else
                 echo "오류: $arg 는 네트워크 주소이거나 잘못된 IP 주소입니다."
                 exit 1
@@ -83,7 +83,7 @@ modprobe br_netfilter
 # ==============================================================================
 # ==============================================================================
 # local small dns
-echo "127.0.0.1 localhost" > /etc/hosts # localhost name will use by calico-node
+echo "127.0.0.1 localhost" >> /etc/hosts # localhost name will use by calico-node
 echo "$2 k8s-cp" >> /etc/hosts
 index=1
 for arg in "${@:3}"

@@ -39,7 +39,7 @@ fi
 # ==============================================================================
 kubeadm init --token 123456.1234567890123456 --token-ttl 0 \
              --pod-network-cidr=172.16.0.0/16 --apiserver-advertise-address=$1\
-             --cri-socket=unix:///run/containerd/containerd.sock \
+             --cri-socket=unix:///run/containerd/containerd.sock
              --node-name=k8s-cp
 
 # config for control plane node only

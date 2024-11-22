@@ -38,5 +38,5 @@ fi
 # Set up worker node
 # ==============================================================================
 kubeadm join --token 123456.1234567890123456 \
-             --discovery-token-unsafe-skip-ca-verification $1:6443
+             --discovery-token-unsafe-skip-ca-verification $1:6443 \
              --node-name k8s-worker-$2
